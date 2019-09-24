@@ -1,2 +1,2 @@
 # CSU33012-Software-Engineering-
-A Repo for my third year Software Engineering Module
+This is a repository of projects for a Software Engineering module.
