@@ -11,7 +11,7 @@ public class LCA {
             left = right = null;
         }
     }
-
+//hello test
         public static Node lowestCommonAncestor(Node root, Node a, Node b) {
             if (root == null)
                 return null;
