@@ -113,5 +113,51 @@ public class LCATest {
         b = new LCA.Node(80);
         assertEquals(20,LCA.lowestCommonAncestor(root,a,b).data, "Testing left tree with nodes few levels apart. Should be 20" );
     }
-    
+
+
+    //extra testing for a more complex realistic tree i.e not left/right leaning tree or perfectly balanced tree
+    //test building a more realistic tree
+    @Test
+    public void testBuildTree(){
+        LCA.Node rootNode = createBinaryTree();
+        assertEquals(40, rootNode.data);
+    }
+
+    //test a reasonable tree
+    @Test
+    public void testBasicCase(){
+        LCA.Node rootNode = createBinaryTree();
+        System.out.println("Lowest common ancestor for node 5 and 30:");
+        LCA.Node node5 = new LCA.Node(5);
+        LCA.Node node30 = new LCA.Node(30);
+        assertEquals(20, LCA.lowestCommonAncestor(rootNode, node5, node30).data);
+    }
+
+
+    public static LCA.Node createBinaryTree() {
+
+        LCA.Node rootNode = new LCA.Node(40);
+        LCA.Node node20 = new LCA.Node(20);
+        LCA.Node node10 = new LCA.Node(10);
+        LCA.Node node30 = new LCA.Node(30);
+        LCA.Node node60 = new LCA.Node(60);
+        LCA.Node node50 = new LCA.Node(50);
+        LCA.Node node70 = new LCA.Node(70);
+        LCA.Node node5 = new LCA.Node(5);
+        LCA.Node node45 = new LCA.Node(45);
+        LCA.Node node55 = new LCA.Node(55);
+
+        rootNode.left = node20;
+        rootNode.right = node60;
+
+        node20.left = node10;
+        node20.right = node30;
+
+        node60.left = node50;
+        node60.right = node70;
+
+        node10.left = node5;
+        node50.right = node55;
+        return rootNode;
+    }
 }
