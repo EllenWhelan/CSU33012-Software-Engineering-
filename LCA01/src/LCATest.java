@@ -1,6 +1,6 @@
 import org.junit.Test;
 
-
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 //@RunWith(JUnit5.class)
@@ -160,4 +160,37 @@ public class LCATest {
         node50.right = node55;
         return rootNode;
     }
+
+    //DAG stuff test section
+    //1. Testing basic functionality
+    //Test null tree
+    @Test
+    public void testNullRootDAG(){
+        LCA.DAGNode testNode = null;
+        LCA.DAGNode a= new LCA.DAGNode(3);
+        LCA.DAGNode b= new LCA.DAGNode(4);
+        assertNull(LCA.dagFindLCA(testNode,a,b));
+
+    }
+    //test null node
+    @Test
+    public void testNullNodeDAG(){
+        LCA.DAGNode testNode = null;
+        assertNull(testNode);
+
+    }
+
+    //test single node tree
+    @Test
+    public void testSingleNOdeTree(){
+        LCA.DAGNode root = new LCA.DAGNode(1);
+        LCA.DAGNode a = new LCA.DAGNode(1);
+        LCA.DAGNode b = new LCA.DAGNode(1);
+        assertEquals(1,LCA.dagFindLCA(root,a,b).data, "Testing single noe tree");
+    }
+
+   
+
+
+
 }
