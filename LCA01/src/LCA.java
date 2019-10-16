@@ -44,15 +44,7 @@ public class LCA {
             data = value;
             parents = children = new ArrayList<DAGNode>();
         }
-
-        public DAGNode setChildren(ArrayList<DAGNode> list){
-            this.children=list;
-            return null;
-        }
-       public DAGNode setParents(ArrayList<DAGNode> list){
-           this.parents=list;
-           return null;
-       }
+        
 
     }
 

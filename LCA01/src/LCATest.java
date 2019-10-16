@@ -189,7 +189,50 @@ public class LCATest {
         assertEquals(1,LCA.dagFindLCA(root,a,b).data, "Testing single noe tree");
     }
 
-   
+    @Test
+    public void createDAGAndTest() {
+        //2. Testing on a realistic DAG
+        LCA.DAGNode rootDAG = new LCA.DAGNode(1);
+        LCA.DAGNode node2 = new LCA.DAGNode(2);
+        LCA.DAGNode node3 = new LCA.DAGNode(3);
+        LCA.DAGNode node4 = new LCA.DAGNode(4);
+        LCA.DAGNode node5 = new LCA.DAGNode(5);
+        LCA.DAGNode node6 = new LCA.DAGNode(6);
+
+        rootDAG.children.add(node2);
+        rootDAG.children.add(node3);
+        rootDAG.children.add(node4);
+        rootDAG.children.add(node5);
+        rootDAG.children.add(node6);
+        node2.children.add(node4);
+        node2.parents.add(rootDAG);
+        node3.children.add(node4);
+        node3.children.add(node5);
+        node3.parents.add(rootDAG);
+        node4.children.add(node5);
+        node4.parents.add(node2);
+        node4.parents.add(node3);
+        node4.parents.add(rootDAG);
+        node5.parents.add(node3);
+        node5.parents.add(node4);
+        node5.parents.add(rootDAG);
+        node6.parents.add(node4);
+
+        assertEquals(1,LCA.dagFindLCA(rootDAG, rootDAG, node4).data, "Answer shoudl eb 1");
+        //testing with null inputs
+        assertNull(LCA.dagFindLCA(null,null,null),"Anser is null");
+        //test with same a and b
+        assertEquals(6, LCA.dagFindLCA(rootDAG, node6, node6).data);
+
+        //if(LCA.dagFindLCA(rootDAG, node4, node6)==null)System.out.println("null bitch");
+        assertEquals(4, LCA.dagFindLCA(rootDAG, node4, node6).data);
+
+        //node not in tree
+        assertNull(LCA.dagFindLCA(rootDAG, new LCA.DAGNode(9),new LCA.DAGNode(99)));
+
+
+
+    }
 
 
 
