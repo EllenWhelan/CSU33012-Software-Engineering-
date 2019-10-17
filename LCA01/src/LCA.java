@@ -44,7 +44,7 @@ public class LCA {
             data = value;
             parents = children = new ArrayList<DAGNode>();
         }
-        
+
 
     }
 
@@ -65,7 +65,6 @@ public class LCA {
         }
 
         if(lca.size()==0){
-            System.out.println("hello bitch");
             if (a.data>b.data) lca.add(dagFindLCA(root,a.parents.get(0), b));
             else lca.add(dagFindLCA(root,a,b.parents.get(0)));
         }
